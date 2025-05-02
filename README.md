@@ -1,6 +1,6 @@
-# Customer Segmentation ETL Project
+# ETL Pipeline for Region Segmentation and Product Performance Analysis (SSIS + SQL Server)
 
-This repository contains an ETL pipeline project built using **SQL Server Integration Services (SSIS)** and **SQL Server**. The pipeline performs customer and product segmentation by processing sales data from an Excel source and loading it into structured tables.
+This repository contains an ETL pipeline project built using **SQL Server Integration Services (SSIS)** and **SQL Server**. The pipeline performs Region segmentation and product performance analysis by processing sales data from an Excel source and loading it into structured tables.
 
 ## Project Overview
 
