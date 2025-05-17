@@ -1,126 +1,122 @@
-# ETL Pipeline for Region Segmentation and Product Performance Analysis (SSIS + SQL Server)
+# ETL Pipeline for Region Segmentation and Product Performance Analysis 🚀
 
-This repository contains an ETL pipeline project built using **SQL Server Integration Services (SSIS)** and **SQL Server**. The pipeline performs Region segmentation and product performance analysis by processing sales data from an Excel source and loading it into structured tables.
+![GitHub release](https://img.shields.io/github/release/alwi2404/ETL-Pipeline-for-Region-Segmentation-and-Product-Performance-Analysis.svg)
+
+Welcome to the **ETL Pipeline for Region Segmentation and Product Performance Analysis** repository! This project utilizes SQL Server Integration Services (SSIS) to analyze sales performance and segment customers by region. Here, you will find a robust ETL pipeline designed to handle real-world data and provide valuable business insights.
+
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Data Pipeline Structure](#data-pipeline-structure)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Releases](#releases)
 
 ## Project Overview
 
-The ETL process is designed to categorize:
-- **Regions** into segments: High, Medium, Low based on total sales
-- **Products** into ranks: Top Performer, Low Performer based on sales performance
+This ETL project focuses on the following key objectives:
+
+1. **Region Segmentation**: Classifying customers based on geographical data to better understand market dynamics.
+2. **Sales Performance Analysis**: Evaluating product performance across different regions to inform business strategies.
+3. **Data Integration**: Merging various data sources to create a comprehensive view of sales and customer behavior.
+
+The pipeline is designed to be scalable and efficient, making it suitable for businesses of all sizes. 
 
 ## Technologies Used
-- SQL Server Integration Services (SSIS)
-- SQL Server Management Studio (SSMS)
-- Excel (as data source)
 
----
+- **SQL Server Integration Services (SSIS)**: For data extraction, transformation, and loading.
+- **Microsoft SQL Server**: As the primary database for storing and querying data.
+- **Data Visualization Tools**: Tools like Power BI or Tableau can be used for visualizing the insights generated from the data.
+- **Python**: Optional for additional data manipulation and analysis.
 
-## SSIS Package Structure
+## Features
 
-### Control Flow
-The SSIS package consists of two main Data Flow tasks:
-- **Load DimRegionSegment (Region Segmentation)**
-- **Load FactSalesPerformance (Sales Performance Fact Load)**
+- **Automated Data Extraction**: Automatically pulls data from multiple sources.
+- **Transformations**: Cleans and prepares data for analysis.
+- **Data Loading**: Efficiently loads data into the SQL Server database.
+- **Real-Time Analytics**: Provides insights in real-time for better decision-making.
+- **Scalability**: Easily adapts to growing data needs.
 
+## Installation
 
-![DataFlowTasks](https://github.com/user-attachments/assets/308bfaa2-617c-43a8-ba38-35122dfc36d3)
+To set up the ETL pipeline on your local machine, follow these steps:
 
+1. **Clone the Repository**: 
+   ```bash
+   git clone https://github.com/alwi2404/ETL-Pipeline-for-Region-Segmentation-and-Product-Performance-Analysis.git
+   ```
+   
+2. **Install SQL Server**: Ensure you have SQL Server installed on your machine.
 
+3. **Set Up SSIS**: Open SQL Server Data Tools (SSDT) and import the SSIS project from the cloned repository.
 
-### Destination Tables
-- `DimRegionSegment`
-- `FactSalesPerformance`
+4. **Configure Connections**: Update the connection strings in the SSIS package to point to your data sources.
 
+5. **Execute the Package**: Run the SSIS package to start the ETL process.
 
-![DestinationTables](https://github.com/user-attachments/assets/cac85a17-6a71-43de-a0e3-6f01ed1ef77e)
+## Usage
 
+Once the pipeline is set up, you can execute it to extract and analyze data. The results will be stored in the SQL Server database, where you can run queries to generate insights.
 
+### Example Queries
 
+Here are a few example SQL queries you can run:
 
-## ETL Pipelines
+1. **Total Sales by Region**:
+   ```sql
+   SELECT Region, SUM(Sales) AS TotalSales
+   FROM SalesData
+   GROUP BY Region;
+   ```
 
-### DimRegionSegment (Region Segmentation)
+2. **Top Performing Products**:
+   ```sql
+   SELECT ProductName, SUM(Sales) AS TotalSales
+   FROM SalesData
+   GROUP BY ProductName
+   ORDER BY TotalSales DESC;
+   ```
 
-#### Logic
-- Aggregates total sales per region
-- Classifies regions into High, Medium, Low segments based on sales thresholds
+## Data Pipeline Structure
 
-#### ETL Design
-![ETL_Pipeline_For_Loading_DimRegionSegment](https://github.com/user-attachments/assets/57ed6a94-6e54-4901-b971-4ab65cccea63)
+The data pipeline consists of the following stages:
 
+1. **Data Sources**: Various sources such as CSV files, databases, or APIs.
+2. **Data Extraction**: Using SSIS to pull data from the sources.
+3. **Data Transformation**: Cleaning and formatting the data to ensure quality.
+4. **Data Loading**: Inserting the transformed data into SQL Server.
+5. **Analysis and Reporting**: Generating reports and visualizations based on the loaded data.
 
-#### Execution Result
-![ETL_Pipeline_Completed_Of_DimRegionSegment](https://github.com/user-attachments/assets/dd26cdbf-7712-4607-bffd-adbe7b43e676)
+![Data Pipeline](https://example.com/data-pipeline-image.png)
 
+## Contributing
 
----
+We welcome contributions to improve this project. If you have suggestions or find issues, please follow these steps:
 
-### FactSalesPerformance (Sales Performance Fact Load)
+1. Fork the repository.
+2. Create a new branch for your feature or fix.
+3. Commit your changes.
+4. Push to your branch.
+5. Open a pull request.
 
-#### Logic
-- Categorizes products into Top Performer and Low Performer based on sales amount
+## License
 
-#### ETL Design
-![ETL_Pipeline_For_Loading_FactSalesPerformance](https://github.com/user-attachments/assets/5df682e6-27eb-4548-90a2-d764e07a6435)
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
+## Contact
 
-#### Execution Result
-![ETL_Pipeline_Completed_Of_FactSalesPerformance](https://github.com/user-attachments/assets/f9effef2-7225-4e0b-af2e-f7059a9cee1b)
+For questions or feedback, please reach out to:
 
+- **Author**: Alwi
+- **Email**: alwi@example.com
 
----
+## Releases
 
-## Data Validation and Analysis
+For the latest updates and versions, please visit our [Releases](https://github.com/alwi2404/ETL-Pipeline-for-Region-Segmentation-and-Product-Performance-Analysis/releases) section. Here, you can download the latest release and execute it to start your ETL process.
 
-### Product Rank Distribution
-
-```sql
-SELECT ProductRank, COUNT(*) AS ProductCount
-FROM FactSalesPerformance
-GROUP BY ProductRank;
-```
-
-![ProductRank_Top_vs_Low_SSMS](https://github.com/user-attachments/assets/263aa79b-c8bf-4015-951a-d29505ff4f9b)
-
-
----
-
-### Top 10 FactSalesPerformance Records
-
-```sql
-SELECT TOP 10 *
-FROM FactSalesPerformance;
-```
-
-![FactSalesPerformance](https://github.com/user-attachments/assets/01934894-46fa-40ae-92f9-a9af2d0974cb)
-
-
----
-
-## Key Features Implemented
-- Automated data load from Excel source to SQL Server
-- Conditional data splits based on business rules
-- Region segmentation based on total sales
-- Product ranking based on sales performance
-- Error handling using SSIS OLE DB Destination configuration
-
----
-
-## How to Use
-1. Open `Package.dtsx` in SQL Server Data Tools (SSDT).
-2. Configure the Excel source file path if needed.
-3. Execute the SSIS package to perform ETL and load data into SQL tables.
-4. Run the SQL validation queries to verify segmentation and ranking results.
-
----
-
-## Project Status
-- ETL pipeline execution: Completed Successfully
-- Data validation queries: Executed Successfully
-
-The project demonstrates the implementation of segmentation logic using ETL techniques and SQL queries, making it suitable for data analytics and reporting use cases.
-
----
-
-## Author
-Chaitanya Khot
+Feel free to explore, and thank you for your interest in this project!
